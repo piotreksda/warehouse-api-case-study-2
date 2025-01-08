@@ -38,5 +38,27 @@ public class ApiTests
     }
     
     
+    [Fact]
+    public async Task CreateProductTest()
+    {
+        // Arrange: Setup API client and payload
+        var client = api.CreateClient();
+        var body = new Product()
+        {
+            Id = Guid.NewGuid(),
+            Name = "test",
+        };
+        // Convert the body to JSON format
+        var jsonContent = new StringContent(
+            System.Text.Json.JsonSerializer.Serialize(body),
+            System.Text.Encoding.UTF8,
+            "application/json"
+        );
+        // Act: Send POST request
+        var response = await client.PostAsync("products", jsonContent);
+        // Assert: Verify response status code and other details
+        response.EnsureSuccessStatusCode(); // Asserts 2xx status code
+        Assert.Equal(System.Net.HttpStatusCode.Created, response.StatusCode);
+    }
 
 }
