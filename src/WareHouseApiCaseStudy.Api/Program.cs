@@ -16,7 +16,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("CORS_LOCALHOST", builder =>
     {
-        builder.WithOrigins("https://localhost:5173") // Specify the allowed origin
+        builder.WithOrigins("https://localhost:5174") // Specify the allowed origin
             .AllowAnyHeader()                   // Allow any headers
             .AllowAnyMethod();                  // Allow any methods (GET, POST, etc.)
     });
