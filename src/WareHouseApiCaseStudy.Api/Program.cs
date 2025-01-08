@@ -44,3 +44,5 @@ app.MapAuthEndpoints()
     .MapWarehouseEndpoints();
 
 app.Run();
+
+internal partial class Program;
